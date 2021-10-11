@@ -1,10 +1,15 @@
+import random
 import pygame as pg
 pg.font.init()
 
-xx = 32
-yy = 132
+r = [0, 86, 172,258]
+num1 = [2,4]
+xx = 32+random.choice(r)
+yy = 134+random.choice(r)
+num = str(random.choice(num1))
 score = 0
 max_score = 0
+
 
 main_display = pg.display.set_mode((400,550))
 main_display.fill((255, 255, 240))
@@ -86,7 +91,7 @@ while game:
     surf1.fill((250, 250, 240))
     main_display.blit(surf1, pg.Rect((xx, yy, 0, 0)))
     f7 = pg.font.Font('Volkswagen medium.ttf', 30)
-    text1 = f7.render('2', True, (100, 100, 100))
+    text1 = f7.render(num , True, (100, 100, 100))
     main_display.blit(text1, (xx+29, yy+19))
 
     pg.display.update()
