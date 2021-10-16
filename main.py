@@ -4,7 +4,8 @@ pg.font.init()
 
 xx = 32
 yy = 132
-r = [0, 86, 172, 258]
+xr = [0, 86, 172, 258]
+yr = [0, 86, 172, 258]
 num1 = [2, 4]
 num = str(random.choice(num1))
 score = 0
@@ -88,8 +89,8 @@ while game:
         main_display.blit(text1, (338, 39))
 
 
-    xx = 32 + random.choice(r)
-    yy = 134 + random.choice(r)
+    xx = 32 + random.choice(xr)
+    yy = 134 + random.choice(yr)
     surf1 = pg.Surface((78, 78))
     surf1.fill((250, 250, 240))
     main_display.blit(surf1, pg.Rect((xx, yy, 0, 0)))
