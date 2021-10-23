@@ -12,7 +12,17 @@ class Cell:
         text1 = f4.render(str(self.num), True, (100, 100, 100))
         self.image.blit(text1, (29, 19))
 
-    def update(self):
-        keys = pg.key.get_pressed()
-        if keys[pg.K_DOWN]:
-            print('down')
+    # def update(self):
+    #     keys = pg.key.get_pressed()
+    #     if keys[pg.K_DOWN]:
+    #         while self.rect.y < 309:
+    #             self.rect.y += 87
+    #     if keys[pg.K_UP]:
+    #         while self.rect.y > 134:
+    #             self.rect.y -= 87
+    #     if keys[pg.K_LEFT]:
+    #         while self.rect.x > 32:
+    #             self.rect.x -= 86
+    #     if keys[pg.K_RIGHT]:
+    #         while self.rect.x < 290:
+    #             self.rect.x += 86
