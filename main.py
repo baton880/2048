@@ -6,23 +6,20 @@ pg.font.init()
 
 score = 0
 max_score = 0
-a = [[0, 0, 0, 0],
-     [0, 0, 0, 0],
-     [0, 0, 0, 0],
-     [0, 0, 0, 0]]
+matrix = [[0, 0, 0, 0],
+          [0, 0, 0, 0],
+          [0, 0, 0, 0],
+          [0, 0, 0, 0]]
 r = [0, 86, 172, 258]
-rx = random.randint(0, 3)
-x = r[rx]
-ry = random.randint(0, 3)
-y = r[ry]
-a[random.randint(0, 3)][rx] = class_Cell.Cell(32 + x, 134 + y)
-rx = random.randint(0, 3)
-x = r[rx]
-ry = random.randint(0, 3)
-y = r[ry]
-a[random.randint(0, 3)][rx] = class_Cell.Cell(32 + x, 134 + y)
-print(*a, sep='\n', end='\n\n')
 
+# Создание первых двух клеточек
+rx = random.randint(0, 3)
+ry = random.randint(0, 3)
+matrix[ry][rx] = class_Cell.Cell(32 + r[rx], 134 + r[ry])
+rx = random.randint(0, 3)
+ry = random.randint(0, 3)
+matrix[ry][rx] = class_Cell.Cell(32 + r[rx], 134 + r[ry])
+print(*matrix, sep='\n', end='\n\n')
 
 main = pg.Surface((350, 353))
 main.fill((200, 200, 200))
@@ -48,8 +45,6 @@ main_display.blit(text1, (190, 5))
 text1 = f4.render('Max score:', True, (100, 100, 100))
 main_display.blit(text1, (190, 38))
 
-
-
 game = True
 while game:
     for e in pg.event.get():
@@ -62,18 +57,18 @@ while game:
                     changes = False
                     for x in range(4):
                         for y in range(3, -1, -1):
-                            if a[y][x] != 0 and y != 3:
-                                if a[y+1][x] != 0:
-                                    if a[y+1][x].num == a[y][x].num:
-                                        a[y + 1][x].num *= 2
-                                        a[y][x] = 0
-                                        print(*a, sep='\n', end='\n\n')
+                            if matrix[y][x] != 0 and y != 3:
+                                if matrix[y + 1][x] != 0:
+                                    if matrix[y + 1][x].num == matrix[y][x].num:
+                                        matrix[y + 1][x].num *= 2
+                                        matrix[y][x] = 0
+                                        print(*matrix, sep='\n', end='\n\n')
                                         changes = True
                                 else:
-                                    a[y][x].rect.y += 87
-                                    a[y + 1][x] = a[y][x]
-                                    a[y][x] = 0
-                                    print(*a, sep='\n', end='\n\n')
+                                    matrix[y][x].rect.y += 87
+                                    matrix[y + 1][x] = matrix[y][x]
+                                    matrix[y][x] = 0
+                                    print(*matrix, sep='\n', end='\n\n')
                                     changes = True
             if e.key == pg.K_UP:
                 changes = True
@@ -81,19 +76,18 @@ while game:
                     changes = False
                     for x in range(4):
                         for y in range(4):
-                            if a[y][x] != 0 and y != 0:
-                                if a[y-1][x] != 0:
-                                    if a[y-1][x] == a[y][x]:
-                                        a[y - 1][x] = a[y-1][x] + a[y][x]
-                                        a[y][x] = 0
-                                        print(*a, sep='\n', end='\n\n')
+                            if matrix[y][x] != 0 and y != 0:
+                                if matrix[y - 1][x] != 0:
+                                    if matrix[y - 1][x] == matrix[y][x]:
+                                        matrix[y - 1][x] = matrix[y - 1][x] + matrix[y][x]
+                                        matrix[y][x] = 0
+                                        print(*matrix, sep='\n', end='\n\n')
                                         changes = True
                                 else:
-                                    a[y - 1][x] = a[y][x]
-                                    a[y][x] = 0
-                                    print(*a, sep='\n', end='\n\n')
+                                    matrix[y - 1][x] = matrix[y][x]
+                                    matrix[y][x] = 0
+                                    print(*matrix, sep='\n', end='\n\n')
                                     changes = True
-
 
     main_display.blit(main, pg.Rect((25, 125, 0, 0)))
     for y in [132, 219, 306, 393]:
@@ -104,7 +98,7 @@ while game:
     main_display.blit(text1, (273, 6))
     main_display.blit(text1, (338, 39))
 
-    for line in a:
+    for line in matrix:
         for cell in line:
             if cell != 0:
                 main_display.blit(cell.image, cell.rect)
