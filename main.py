@@ -5,12 +5,22 @@ import class_Cell
 pg.font.init()
 
 score = 0
-max_score = 0
+with open('max_score.txt', 'r') as mx:
+    max_score = int(mx.read())
+
 matrix = [[0, 0, 0, 0],
           [0, 0, 0, 0],
           [0, 0, 0, 0],
           [0, 0, 0, 0]]
 r = [0, 86, 172, 258]
+
+
+def game_over ():
+    with open('max_score.txt', 'r') as mx:
+        maxss = int(mx.read())
+    if maxss < score:
+        with open('max_score.txt', 'w') as mx:
+            mx.write(str(score))
 
 # Создание первых двух клеточек
 def create_cell():
@@ -42,18 +52,15 @@ text1 = f2.render('2048', True, (100, 100, 100))
 main_display.blit(text1, (30, 15))
 
 f4 = pg.font.Font('Volkswagen medium.ttf', 30)
-text1 = f4.render('Score:', True, (100, 100, 100))
-main_display.blit(text1, (190, 5))
-
-text1 = f4.render('Max score:', True, (100, 100, 100))
-main_display.blit(text1, (190, 38))
-
+text_score = f4.render('Score:', True, (100, 100, 100))
+text_max = f4.render('Max:', True, (100, 100, 100))
 
 game = True
 while game:
     movement = False
     for e in pg.event.get():
         if e.type == pg.QUIT:
+            game_over()
             game = False
         if e.type == pg.KEYDOWN:
             if e.key == pg.K_DOWN:
@@ -148,14 +155,27 @@ while game:
     if movement == True:
         create_cell()
 
+    pg.draw.rect(main_display, (255, 255, 240), (150, 0, 250, 100))
+
     main_display.blit(main, pg.Rect((25, 125, 0, 0)))
+
     for y in [132, 219, 306, 393]:
         for x in [32, 118, 204, 290]:
             main_display.blit(base, pg.Rect((x, y, 0, 0)))
 
+    #Score и max score
     text1 = f4.render(str(score), True, (100, 100, 100))
-    main_display.blit(text1, (273, 6))
-    main_display.blit(text1, (338, 39))
+    text1_rect = text1.get_rect(right=390, top=6)
+    main_display.blit(text1, text1_rect)
+    text_score_rect =  text_score.get_rect(right=text1_rect.left-10, top=text1_rect.top-1)
+    main_display.blit(text_score, text_score_rect)
+
+    text_m = f4.render(str(max_score), True, (100, 100, 100))
+    text_m_rect = text_m.get_rect(right=390, top=38)
+    main_display.blit(text_m, text_m_rect)
+    text_max_rect =  text_max.get_rect(right=text_m_rect.left-10, top=text_m_rect.top-1)
+    main_display.blit(text_max, text_max_rect)
+
 
     for line in matrix:
         for cell in line:
@@ -163,3 +183,6 @@ while game:
                 main_display.blit(cell.image, cell.rect)
 
     pg.display.update()
+
+# TODO кнопки
+# TODO game over
