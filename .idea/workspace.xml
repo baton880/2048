@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8649d8ad-4fa6-40a6-abd1-873b110cd626" name="Default Changelist" comment="checkpoint 3, matrix">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_Cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_Cell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="8649d8ad-4fa6-40a6-abd1-873b110cd626" name="Default Changelist" comment="checkpoint 5 (colors, moves, many cells)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634997731932</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="checkpoint 5 (colors, moves, many cells)">
+      <created>1636208203548</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636208203549</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +146,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="checkpoint 2" />
     <MESSAGE value="checkpoint 3, matrix" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkpoint 3, matrix" />
+    <MESSAGE value="checkpoint 5 (colors, moves, many cells)" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkpoint 5 (colors, moves, many cells)" />
   </component>
 </project>
